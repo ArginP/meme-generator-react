@@ -15,9 +15,6 @@ export default defineConfig({
                 autoprefixer({})
             ],
         }
-    }
+    },
+    base: '/meme-generator-react/'
 })
-
-
-
-
