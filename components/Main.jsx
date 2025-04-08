@@ -33,11 +33,10 @@ export default function Main() {
     function handleClick() {
         const memeId = Math.floor(Math.random() * memeData.length);
 
-        setMeme(() => {
+        setMeme(prevMeme => {
             return {
+                ...prevMeme,
                 imageUrl: memeData[memeId].url,
-                topText: "",
-                botText: ""
             }
         })
     }
