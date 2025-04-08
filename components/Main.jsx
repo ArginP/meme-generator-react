@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Meme from "./Meme.jsx";
 
 export default function Main() {
@@ -10,6 +10,15 @@ export default function Main() {
         }
     );
 
+    const [memeData, setMemeData] = useState(null)
+
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => setMemeData(data.data.memes))
+            .catch(err => console.log(err));
+    }, [])
+
     function handleChange(event) {
         const { name, value } = event.currentTarget;
 
@@ -17,6 +26,18 @@ export default function Main() {
             return {
                 ...prevMeme,
                 [name]: value
+            }
+        })
+    }
+
+    function handleClick() {
+        const memeId = Math.floor(Math.random() * memeData.length);
+
+        setMeme(() => {
+            return {
+                imageUrl: memeData[memeId].url,
+                topText: "",
+                botText: ""
             }
         })
     }
@@ -43,7 +64,9 @@ export default function Main() {
                         value={meme.botText}
                     />
                 </label>
-                <button>Get a new meme image 🖼</button>
+                <button
+                    onClick={handleClick}
+                >Get a new meme image 🖼</button>
             </div>
 
             <Meme
