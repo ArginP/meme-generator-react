@@ -16,4 +16,4 @@ Practice project
 - Добавление надписи сверху и снизу мема
   - Обновление картинки с текстом в реальном времени с помощью useState React
 
-[Деплой via GitHub Actions](https://arginp.github.io/meme-generator-react/)
+## [Деплой via GitHub Actions](https://arginp.github.io/meme-generator-react/)
